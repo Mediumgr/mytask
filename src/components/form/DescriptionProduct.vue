@@ -35,6 +35,10 @@ export default {
   border: none;
   outline: none;
   resize: none;
+
+  &:focus {
+    color: rgb(193, 86, 86);
+  }
 }
 
 .wrapper-slot {

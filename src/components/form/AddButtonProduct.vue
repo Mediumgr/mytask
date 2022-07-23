@@ -22,10 +22,15 @@ export default {
 <style lang="scss" scoped>
 .btn {
   height: 36px;
-  background: #eeeeee;
+  background: #7bae73;
   border-radius: 10px;
   border: none;
   outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #7eb1c9;
+  }
 }
 
 .wrapper-slot {
@@ -37,6 +42,6 @@ export default {
   line-height: 15px;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #b4b4b4;
+  color: #ffffff;
 }
 </style>

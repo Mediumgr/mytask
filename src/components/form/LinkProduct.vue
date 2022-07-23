@@ -1,21 +1,21 @@
 <template>
   <div>
     <div class="wrapper-slot">
-        <slot></slot>
-        <span class="mandatoryField"></span>
+      <slot></slot>
+      <span class="mandatoryField"></span>
     </div>
-    <input type="text" class="link" :placeholder="placeholder"/>
+    <input type="text" class="link" :placeholder="placeholder" />
   </div>
 </template>
 
 <script>
 export default {
-    name: "LinkProduct",
-    data() {
-        return {
-            placeholder: "Введите ссылку"
-        }
-    },
+  name: "LinkProduct",
+  data() {
+    return {
+      placeholder: "Введите ссылку",
+    };
+  },
 };
 </script>
 
@@ -31,17 +31,20 @@ export default {
   border-radius: $borderRadius;
   border: none;
   outline: none;
+  &:focus {
+    color: rgb(193, 86, 86);
+  }
 }
 
 .wrapper-slot {
-    @include headlinesOfForm($fontFamily, $fontStyle, 4px);
-    position: relative;
+  @include headlinesOfForm($fontFamily, $fontStyle, 4px);
+  position: relative;
 }
 
 .mandatoryField {
   width: 4px;
   height: 4px;
-  background: #FF8484;
+  background: #ff8484;
   border-radius: 4px;
   display: inline-block;
   position: absolute;

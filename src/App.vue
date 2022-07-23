@@ -1,16 +1,18 @@
 <template>
-  <div class="wrapper">
-    <header class="wrapper__header">
+  <div>
+    <header class="header">
       <p class="description">Добавление товара</p>
-      <v-button></v-button>
+      <button-select/>
     </header>
-    <div class="content">
-      <aside>
-        <form-product></form-product>
-      </aside>
-      <main>
-        <list-of-products></list-of-products>
-      </main>
+    <div class="wrapper">
+      <div class="wrapper__content">
+        <aside>
+          <form-product></form-product>
+        </aside>
+        <main>
+          <list-of-products></list-of-products>
+        </main>
+      </div>
     </div>
   </div>
 </template>
@@ -18,14 +20,14 @@
 <script>
 import FormProduct from "@/components/form/FormProduct.vue";
 import ListOfProducts from "@/components/main/ListOfProducts.vue";
-import VButton from "@/components/header/VButton.vue";
+import ButtonSelect from "@/components/header/ButtonSelect.vue";
 
 export default {
   name: "myApp",
   components: {
     FormProduct,
     ListOfProducts,
-    VButton,
+    ButtonSelect,
   },
 };
 </script>
@@ -44,28 +46,45 @@ body {
   box-sizing: border-box;
 }
 
-.wrapper {
-  @media (max-width: 767.98px) {
-    justify-content: center;
-    margin-top: 10px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 425px) {
+    width: 332px;
   }
   @media (min-width: 768px) {
-    margin: 30px 32px 16px 32px;
+    width: 724px;
   }
-  &__header {
-    display: flex;
-    justify-content: space-between;
+  @media (min-width: 1024px) {
+    width: 980px;
+  }
+  @media (min-width: 1440px) {
+    width: 1376px;
   }
 }
 
-.content {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 16px;
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    display: grid;
+    grid-gap: 16px;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
 }
 
 .description {
-  margin-bottom: 16px;
   font-family: $fontFamily;
   font-style: $fontStyle;
   font-weight: $fontWeight;
@@ -73,8 +92,8 @@ body {
   line-height: 35px;
   color: $color;
 
-  @media (min-width: 320px) and (max-width: 425px) {
-    font-size: 18px;
+  @media (min-width: 320px) and (max-width: 767.98px) {
+    font-size: 16px;
     margin-bottom: 10px;
   }
 }

@@ -25,6 +25,9 @@ export default {
 
 .priceDescription {
      @include same_input_style($height, 4px, #fffefb);
+    &:focus {
+        color: rgb(193, 86, 86);
+    }
 }
 
 .wrapper-slot {

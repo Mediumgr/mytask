@@ -1,21 +1,26 @@
 <template>
   <div>
     <div class="wrapper-slot">
-        <slot></slot>
-        <span class="mandatoryField"></span>
+      <slot></slot>
+      <span class="mandatoryField"></span>
     </div>
-    <input type="text" class="nameDescription" :placeholder="placeholder"/>
+    <input
+      id="nameDescription"
+      type="text"
+      class="nameDescription"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
 <script>
 export default {
-    name: "NameProduct",
-    data() {
-        return {
-            placeholder: "Введите наименование товара"
-        }
-    },
+  name: "NameProduct",
+  data() {
+    return {
+      placeholder: "Введите наименование товара",
+    };
+  },
 };
 </script>
 
@@ -25,6 +30,9 @@ export default {
 
 .nameDescription {
   @include same_input_style($height, 4px, #fffefb);
+  &:focus {
+    color: rgb(193, 86, 86);
+  }
 }
 
 .wrapper-slot {
@@ -35,7 +43,7 @@ export default {
 .mandatoryField {
   width: 4px;
   height: 4px;
-  background: #FF8484;
+  background: #ff8484;
   border-radius: 4px;
   display: inline-block;
   position: absolute;

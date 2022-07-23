@@ -1,11 +1,13 @@
 <template>
   <div>
-    <form @submit.prevent="addOfGood" class="form center">
+    <form @submit.prevent="addOfGood" class="form">
       <name-product class="nameGood">Наименование товара</name-product>
       <description-product class="descriptionGood"
         >Описание товара</description-product
       >
-      <link-product class="linkOfGood">Ссылка на изображение товара</link-product>
+      <link-product class="linkOfGood"
+        >Ссылка на изображение товара</link-product
+      >
       <price-product class="priceOfGood">Цена товара</price-product>
       <add-button-product class="addOfGood">Добавить товар</add-button-product>
     </form>
@@ -45,6 +47,14 @@ export default {
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: $borderRadius;
+  padding: 24px;
+
+  @media (min-width: 320px) {
+    width: 290px;
+  }
+  @media (min-width: 425px) {
+    width: 332px;
+  }
 
   .nameGood,
   .descriptionGood,
@@ -66,16 +76,8 @@ export default {
       grid-template-columns: 1fr;
     }
   }
-}
-
-.center {
-  padding: 24px;
-
-   @media (min-width: 320px) {
-    width: 290px;
-  } 
-   @media (min-width: 425px) {
-    width: 332px;
-  } 
+  &:hover {
+      box-shadow: 0 5px 8px 0 rgb(0 0 0 / 36%);
+    }
 }
 </style>
