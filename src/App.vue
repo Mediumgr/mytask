@@ -2,7 +2,7 @@
   <div>
     <header class="header">
       <p class="description">Добавление товара</p>
-      <button-select/>
+      <button-select />
     </header>
     <div class="wrapper">
       <div class="wrapper__content">
@@ -10,7 +10,7 @@
           <form-product></form-product>
         </aside>
         <main>
-          <list-of-products></list-of-products>
+          <list-of-products v-if="getProductsList.length"></list-of-products>
         </main>
       </div>
     </div>
@@ -21,6 +21,7 @@
 import FormProduct from "@/components/form/FormProduct.vue";
 import ListOfProducts from "@/components/main/ListOfProducts.vue";
 import ButtonSelect from "@/components/header/ButtonSelect.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "myApp",
@@ -28,6 +29,9 @@ export default {
     FormProduct,
     ListOfProducts,
     ButtonSelect,
+  },
+  computed: {
+    ...mapGetters(["getProductsList"]),
   },
 };
 </script>

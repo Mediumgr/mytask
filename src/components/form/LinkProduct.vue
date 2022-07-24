@@ -4,13 +4,25 @@
       <slot></slot>
       <span class="mandatoryField"></span>
     </div>
-    <input type="text" class="link" :placeholder="placeholder" />
+    <input
+      :value="value"
+      @input="$emit('input', $event.target.value)"
+      type="text"
+      class="link"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: "LinkProduct",
+  props: {
+    value: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       placeholder: "Введите ссылку",

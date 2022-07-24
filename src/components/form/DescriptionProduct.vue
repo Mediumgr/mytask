@@ -4,6 +4,8 @@
       <slot></slot>
     </div>
     <textarea
+      :value="value"
+      @input="$emit('input', $event.target.value)"
       type="text"
       class="goodDescription"
       :placeholder="placeholder"
@@ -14,6 +16,12 @@
 <script>
 export default {
   name: "DescriptionProduct",
+  props: {
+    value: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       placeholder: "Введите описание товара",
