@@ -6,6 +6,7 @@
 На всякий случай скидываю ссылку для просмотра работы: https://idaproject.onrender.com
 
 Описание запуска вот тут:
+
 ## Project setup
 ```
 npm install
