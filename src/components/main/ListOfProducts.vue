@@ -2,8 +2,8 @@
   <div>
     <transition-group tag="div" name="animation" class="wrapper__products">
       <product-item
-        v-for="(item, index) of productsList"
-        :key="index"
+        v-for="item of productsList"
+        :key="item.id"
         :product="item"
       ></product-item>
     </transition-group>
@@ -61,6 +61,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 332px);
   grid-gap: 16px;
+  margin-bottom: 16px;
 
   @media (min-width: 320px) and (max-width: 424.98px) {
     grid-template-columns: 290px;

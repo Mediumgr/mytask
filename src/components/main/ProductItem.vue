@@ -80,11 +80,13 @@ export default {
     }
   }
   &__description {
-    display: grid;
-    grid-template-rows: auto 117px auto;
+    display: flex;
+    flex-direction: column;
     padding: 16px;
     height: 223px;
     word-wrap: break-word;
+    overflow: hidden;
+    justify-content: space-between;
 
     &_title {
       font-family: $fontFamily;
