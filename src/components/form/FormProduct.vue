@@ -80,7 +80,11 @@ export default {
         this.errorPrice === "" &&
         this.errorLink === ""
       ) {
+
+        let counterId = this.$store.state.productsList.length - 1;
+        
         let product = {
+          id: (counterId += 1),
           nameProduct: this.nameProduct,
           description: this.description,
           link: this.link,
@@ -146,7 +150,7 @@ export default {
 @import "@/assets/styles/_vars.scss";
 
 .sticky {
-    position: static;
+  position: static;
   @media (min-width: 768px) {
     position: sticky;
     top: 0;
