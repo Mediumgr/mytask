@@ -1,16 +1,22 @@
 <template>
   <div>
+    <transition name="animation" v-if="success">
+      <succesfull-added class="succesfull"
+        >Товар успешно добавлен</succesfull-added
+      >
+    </transition>
     <header class="header">
       <p class="description">Добавление товара</p>
-      <button-select/>
+      <button-select />
     </header>
     <div class="wrapper">
       <div class="wrapper__content">
-        <aside>
-          <form-product></form-product>
-        </aside>
+        <form-product></form-product>
         <main>
-          <list-of-products></list-of-products>
+          <list-of-products
+            :productsList="productsList"
+            :loading="loading"
+          ></list-of-products>
         </main>
       </div>
     </div>
@@ -21,6 +27,8 @@
 import FormProduct from "@/components/form/FormProduct.vue";
 import ListOfProducts from "@/components/main/ListOfProducts.vue";
 import ButtonSelect from "@/components/header/ButtonSelect.vue";
+import SuccesfullAdded from "@/components/main/SuccesfullAdded.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "myApp",
@@ -28,6 +36,40 @@ export default {
     FormProduct,
     ListOfProducts,
     ButtonSelect,
+    SuccesfullAdded,
+  },
+  data() {
+    return {
+      loading: false,
+      success: false,
+    };
+  },
+  methods: {
+    ...mapActions(["fetchProducts"]),
+  },
+  computed: {
+    ...mapGetters({ productsList: "getProductsList", successGetter: "successAnimation" }),
+  },
+  watch: {
+    successGetter() {
+      if (this.successGetter.length !== 0) {
+        this.success = true;
+        setTimeout(() => {
+          this.success = false;
+        }, 1300);
+      }
+    },
+  },
+  created() {
+    if (localStorage.length !== 0 && this.productsList.length !== 0) {
+      let existedProducts = JSON.parse(localStorage.getItem("my-productsList"));
+      this.$store.commit("SET_EXISTED_PRODUCTS_LIST", existedProducts);
+    } else {
+      this.loading = true;
+      this.fetchProducts().then(() => {
+        this.loading = false;
+      });
+    }
   },
 };
 </script>
@@ -44,6 +86,18 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.succesfull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 10px;
+  left: 0px;
+  width: 100%;
+  padding: 5px;
+  color: red;
 }
 
 .header {
@@ -111,5 +165,15 @@ body {
 
 :-ms-input-placeholder {
   @include style_for_placeholder(12px, $fontFamily);
+}
+
+.animation-enter-active,
+.animation-leave-active {
+  transition: all 1.2s;
+}
+
+.animation-leave-to {
+  opacity: 0;
+  transform: translateY(60px);
 }
 </style>

@@ -1,21 +1,38 @@
 <template>
-    <div>
+  <div>
     <div class="wrapper-slot">
-        <slot></slot>
-        <span class="mandatoryField"></span>
+      <slot></slot>
+      <span class="mandatoryField"></span>
     </div>
-    <input type="text" class="priceDescription" :placeholder="placeholder"/>
+    <input
+      :value="value"
+      @change="priceEmitting($event)"
+      type="text"
+      class="priceDescription"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
 <script>
 export default {
-    name: "PriceProduct",
-    data() {
-        return {
-            placeholder: "Введите цену"
-        }
+  props: {
+    value: {
+      type: String,
+      default: "",
     },
+  },
+  name: "PriceProduct",
+  data() {
+    return {
+      placeholder: "Введите цену",
+    };
+  },
+  methods: {
+    priceEmitting(event) {
+      this.$emit("input", event.target.value);
+    },
+  },
 };
 </script>
 
@@ -24,21 +41,21 @@ export default {
 @import "@/assets/styles/_mixin.scss";
 
 .priceDescription {
-     @include same_input_style($height, 4px, #fffefb);
-    &:focus {
-        color: rgb(193, 86, 86);
-    }
+  @include same_input_style($height, 4px, #fffefb);
+  &:focus {
+    color: rgb(193, 86, 86);
+  }
 }
 
 .wrapper-slot {
-    @include headlinesOfForm($fontFamily, $fontStyle, 4px);
-    position: relative;
+  @include headlinesOfForm($fontFamily, $fontStyle, 4px);
+  position: relative;
 }
 
 .mandatoryField {
   width: 4px;
   height: 4px;
-  background: #FF8484;
+  background: #ff8484;
   border-radius: 4px;
   display: inline-block;
   position: absolute;

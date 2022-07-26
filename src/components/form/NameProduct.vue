@@ -5,6 +5,9 @@
       <span class="mandatoryField"></span>
     </div>
     <input
+      v-focus
+      :value="value"
+      @input="addName($event)"
       id="nameDescription"
       type="text"
       class="nameDescription"
@@ -16,10 +19,28 @@
 <script>
 export default {
   name: "NameProduct",
+  props: {
+    value: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       placeholder: "Введите наименование товара",
     };
+  },
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus();
+      },
+    },
+  },
+  methods: {
+    addName(event) {
+        this.$emit("input", event.target.value);
+    },
   },
 };
 </script>

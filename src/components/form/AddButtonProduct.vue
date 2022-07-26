@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn" @click="addOfProduct">
+    <button :disabled="statusForDisable" class="btn">
       <div class="wrapper-slot">
         <slot></slot>
       </div>
@@ -11,9 +11,10 @@
 <script>
 export default {
   name: "AddButtonProduct",
-  methods: {
-    addOfProduct() {
-      console.log("Товар добавлен");
+  props: {
+    statusForDisable: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -31,6 +32,11 @@ export default {
   &:hover {
     background: #7eb1c9;
   }
+}
+
+.btn[disabled] {
+  background: #eeeeee;
+  color: red;
 }
 
 .wrapper-slot {
