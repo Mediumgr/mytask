@@ -80,9 +80,8 @@ export default {
     }
   }
   &__description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: auto 117px auto;
     padding: 16px;
     height: 223px;
     word-wrap: break-word;
@@ -93,6 +92,7 @@ export default {
       font-weight: 400;
       font-size: 16px;
       line-height: 20px;
+      overflow: hidden;
       @media (min-width: 320px) {
         font-size: 16px;
         line-height: 20px;

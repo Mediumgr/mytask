@@ -56,7 +56,7 @@ export default {
       errorProduct: "",
       errorPrice: "",
       errorLink: "",
-      regExp: /(https?:\/\/.*\.(?:png|jpg))/i,
+      regExp: /(https?:\/\/.*\.(?:png|jpg|jpeg))/i,
       added: false,
     };
   },
@@ -146,9 +146,11 @@ export default {
 @import "@/assets/styles/_vars.scss";
 
 .sticky {
-  position: sticky;
-  top: 0;
-
+    position: static;
+  @media (min-width: 768px) {
+    position: sticky;
+    top: 0;
+  }
   .form {
     min-height: 440px;
     background: $background;

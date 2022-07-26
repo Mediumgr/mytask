@@ -1,5 +1,9 @@
 # mytask
 
+Привет!
+Моя версия node: v16.15.1
+
+Описание запуска вот тут:
 ## Project setup
 ```
 npm install
