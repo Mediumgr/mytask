@@ -64,15 +64,11 @@ export default {
     addProductToList() {
       this.errorPrice = "";
 
-      this.price = parseInt(this.price);
       if (this.price === "") {
         this.errorPrice = "Поле является обязательным";
       }
       if (Object.is(this.price, NaN)) {
         this.errorPrice = "Обновите страницу и введите цену товара цифрой";
-      }
-      if (!Object.is(this.price, NaN) && typeof this.price === "number") {
-        this.price = this.price.toLocaleString("ru-RU");
       }
 
       if (
@@ -82,13 +78,15 @@ export default {
       ) {
 
         let counterId = this.$store.state.productsList.length - 1;
-        
+
+        let stringPrice = this.price.replace(/\s/g, "");
+
         let product = {
           id: (counterId += 1),
           nameProduct: this.nameProduct,
           description: this.description,
           link: this.link,
-          price: Number(this.price.replace(/\s/g, "")),
+          price: stringPrice,
         };
 
         this.$store.commit("ADD_PRODUCT_TO_LIST", product);
@@ -147,14 +145,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/_vars.scss";
+/* @import "@/assets/styles/_vars.scss"; */
 
 .sticky {
-  position: static;
-  @media (min-width: 768px) {
-    position: sticky;
-    top: 0;
-  }
   .form {
     min-height: 440px;
     background: $background;
@@ -168,6 +161,10 @@ export default {
     }
     @media (min-width: 425px) {
       width: 332px;
+    }
+    @media (min-width: 768px) {
+      position: sticky;
+      top: 0;
     }
 
     .nameGood,

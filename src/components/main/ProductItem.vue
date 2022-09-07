@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/_vars.scss";
+/* @import "@/assets/styles/_vars.scss"; */
 .product {
   background: #fffefb;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
@@ -83,10 +83,9 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 16px;
-    height: 223px;
+    min-height: 223px;
     word-wrap: break-word;
     overflow: hidden;
-    justify-content: space-between;
 
     &_title {
       font-family: $fontFamily;
@@ -95,6 +94,7 @@ export default {
       font-size: 16px;
       line-height: 20px;
       overflow: hidden;
+      flex-grow: 1;
       @media (min-width: 320px) {
         font-size: 16px;
         line-height: 20px;
@@ -109,6 +109,7 @@ export default {
       font-style: $fontStyle;
       font-weight: $fontWeight;
       font-size: 20px;
+      padding-bottom: 10px;
     }
     &_price {
       font-family: $fontFamily;

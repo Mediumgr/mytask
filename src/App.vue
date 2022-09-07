@@ -6,7 +6,7 @@
       >
     </transition>
     <header class="header">
-      <p class="description">Добавление товара</p>
+      <h3 class="description">Добавление товара</h3>
       <button-select />
     </header>
     <div class="wrapper">
@@ -75,8 +75,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/_vars.scss";
-@import "@/assets/styles/_mixin.scss";
+/* @import "@/assets/styles/_vars.scss";
+@import "@/assets/styles/_mixin.scss"; */
 
 body {
   background: #e5e5e5;

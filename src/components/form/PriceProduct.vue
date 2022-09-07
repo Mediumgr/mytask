@@ -30,15 +30,17 @@ export default {
   },
   methods: {
     priceEmitting(event) {
-      this.$emit("input", event.target.value);
+      let val = event.target.value;
+      let changePriceWithSpace = Number(val).toLocaleString("ru-RU");
+      this.$emit("input", changePriceWithSpace);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/_vars.scss";
-@import "@/assets/styles/_mixin.scss";
+/* @import "@/assets/styles/_vars.scss";
+@import "@/assets/styles/_mixin.scss"; */
 
 .priceDescription {
   @include same_input_style($height, 4px, #fffefb);
